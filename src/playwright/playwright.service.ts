@@ -11,7 +11,7 @@ export class PlaywrightService {
     await page.goto('https://www.promiedos.com.ar/primera');
 
     const teamsList = await page.$$eval(
-      '.tablesorter1 > tbody > tr',
+      '.tablesorter5 > tbody > tr',
       (rows) => {
         return rows.map((row) => {
           return {
