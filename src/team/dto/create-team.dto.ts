@@ -1,8 +1,7 @@
 export class CreateTeamDto {
   constructor(
-    public id: string,
-    public position: number,
     public name: string,
+    public position: number,
     public points: number,
     public played: number,
     public wins: number,
