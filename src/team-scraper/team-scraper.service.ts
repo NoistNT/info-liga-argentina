@@ -47,7 +47,19 @@ export class TeamScraperService {
       return { success: false, message: 'Table not found on the website' };
     }
 
-    await this.teamModel.insertMany(teamsList);
+    for (const teamData of teamsList) {
+      const existingTeam = await this.teamModel.findOne({
+        name: teamData.name,
+      });
+
+      if (existingTeam) {
+        await this.teamModel.updateOne(
+          { _id: existingTeam._id },
+          { $set: teamData },
+        );
+      }
+    }
+
     return {
       success: true,
       message: 'Teams scraped successfully',
