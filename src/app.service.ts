@@ -5,15 +5,10 @@ export class AppService {
   getWelcome(): {
     service: string;
     version: string;
-    teams: { list: string; team: string };
   } {
     return {
-      service: 'info-liga-argentina',
+      service: 'info-liga-argentina-scraper',
       version: '1.0.0',
-      teams: {
-        list: 'localhost:3001/team',
-        team: 'localhost:3001/team/1',
-      },
     };
   }
 }

@@ -3,7 +3,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TeamModule } from './team/team.module';
 import { TeamScraperModule } from './team-scraper/team-scraper.module';
 import { SeederModule } from './seeder/seeder.module';
 
@@ -17,7 +16,6 @@ import { SeederModule } from './seeder/seeder.module';
       }),
       inject: [ConfigService],
     }),
-    TeamModule,
     TeamScraperModule,
     SeederModule,
   ],

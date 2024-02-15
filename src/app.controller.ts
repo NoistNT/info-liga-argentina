@@ -9,7 +9,6 @@ export class AppController {
   getWelcome(): {
     service: string;
     version: string;
-    teams: { list: string; team: string };
   } {
     return this.appService.getWelcome();
   }
