@@ -9,7 +9,11 @@ export class StandingSeederService {
     @InjectModel('Standing') private readonly standingModel: Model<Standing>,
   ) {}
 
-  async seedStandings(): Promise<{ success: boolean; message: string }> {
+  async seedStandings(): Promise<{
+    status: number;
+    message: string;
+    data: Standing[] | null;
+  }> {
     const standingsData = [
       {
         teamId: 3,
@@ -436,10 +440,18 @@ export class StandingSeederService {
     try {
       await this.standingModel.deleteMany({});
       await this.standingModel.insertMany(standingsData);
-      return { success: true, message: 'Standings seeded successfully.' };
+      return {
+        status: 201,
+        message: 'Standings seeded successfully.',
+        data: standingsData,
+      };
     } catch (error) {
-      console.error('Error seeding standings:', error);
-      return { success: false, message: 'Error seeding standings.' };
+      console.error(error);
+      return {
+        status: 500,
+        message: 'Error seeding standings.',
+        data: null,
+      };
     }
   }
 }

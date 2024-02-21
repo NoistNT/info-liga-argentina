@@ -7,10 +7,6 @@ export class StandingSeederController {
 
   @Get()
   async seedStandings() {
-    const seededStandings = await this.standingSeederService.seedStandings();
-    return {
-      success: seededStandings.success,
-      message: seededStandings.message,
-    };
+    return await this.standingSeederService.seedStandings();
   }
 }

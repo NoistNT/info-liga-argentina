@@ -9,11 +9,6 @@ export class StandingScraperController {
 
   @Get()
   async scrapeStandings() {
-    const standings = await this.standingScraperService.scrapeStandings();
-    return {
-      success: standings.success,
-      message: standings.message,
-      standings: standings.standings,
-    };
+    return await this.standingScraperService.scrapeStandings();
   }
 }
